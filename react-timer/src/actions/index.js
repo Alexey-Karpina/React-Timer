@@ -21,3 +21,4 @@ export const timerTick = () => {
     type: "TICK_TIMER",
   };
 };
+

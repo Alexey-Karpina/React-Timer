@@ -1,19 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import "./App.css";
+
 
 import { timerStart, timerStop, timerReset, timerTick } from "./actions";
 const App = () => {
-  const [click, setClick] = useState(0);
+  const [click, setClick] = useState(1);
   const [start, setStart] = useState(0);
-  const [end, setEnd] = useState(0);
   const time = useSelector((state) => state.time);
   const isActive = useSelector((state) => state.isActive);
 
   const dispatch = useDispatch();
 
-  console.log(time);
 
   const { sec, min, hour } = time;
   useEffect(() => {
@@ -26,52 +24,30 @@ const App = () => {
     return () => clearInterval(timer);
   }, [isActive, sec]);
   const startStop = (status) => {
-    console.log("Start Stop", status);
     if (!status) {
       dispatch(timerStart(sec, min, hour));
       return;
     }
     dispatch(timerStop());
   };
-  // useEffect(() => {
-  //   if (click === 1) {
-  //     console.log("Click 1");
-  //     setStart(+new Date());
-  //     console.log(start);
-  //   }
-  //   if (click === 2) {
-  //     setEnd(Date.now());
-  //     console.log(start);
-  //     console.log(end);
-  //     if (end - start <= 300) {
-  //       console.log("Click 2");
-  //       startStop(isActive);
-  //       setClick(0);
-  //     }
-  //     setClick(0);
-  //   }
-  // }, [click]);
+
   const wait = () => {
     setClick(click + 1);
-    let startCLick;
     let endClick;
+    let interval;
     if (click === 1) {
-      //setStart(Date.now());
-      startCLick = Date.now();
-      console.log(startCLick);
+      setStart(Date.now());
     }
     if (click === 2) {
-      //setEnd(Date.now());
       endClick = Date.now();
-      console.log(endClick);
-      if (endClick - startCLick <= 300) {
-        console.log(endClick - startCLick);
+
+      if (endClick - start <= 300) {
         startStop(isActive);
       }
-      setClick(0);
+      setClick(1);
     }
     if (click === 3) {
-      setClick(0);
+      setClick(1);
     }
   };
   return (

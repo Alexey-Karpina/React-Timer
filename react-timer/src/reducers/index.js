@@ -33,25 +33,21 @@ const addSec = (state) => {
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case "START_TIMER":
-      console.log("Start Timer", state);
       return {
         ...state,
         isActive: true,
       };
 
     case "STOP_TIMER":
-      console.log("Stop Timer", state);
       return {
         ...state,
         isActive: false,
       };
 
     case "RESET_TIMER":
-      console.log("Reset Timer", state);
       return initialState;
 
     case "TICK_TIMER":
-      console.log("Tick Timer", state);
       return {
         ...state,
         time: addSec(state),

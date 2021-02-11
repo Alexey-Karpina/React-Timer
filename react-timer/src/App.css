@@ -1,24 +1,26 @@
 .timer {
-  height: 100px;
+  height: 300px;
+  width: 300px;
   font-size: 50px;
+  border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: antiquewhite;
+  cursor: pointer;
 }
-.timer__controller{
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    margin-top: 50px;
+.timer__controller {
+  margin-top: 50px;
 }
-.button{
-    margin: 0;
-    padding: 0;
-    width: 200px;
-    height: 80px;
-    font-size: 40px;
-    background-color:darkgoldenrod;
-    color: #ffff;
+.button {
+  padding: 0;
+  width: 200px;
+  height: 80px;
+  font-size: 40px;
+  background-color: initial;
+  color: #ffff;
+  cursor: pointer;
 }
-
+.button:not(:last-child) {
+  margin: 0 20px 0 0;
+}
